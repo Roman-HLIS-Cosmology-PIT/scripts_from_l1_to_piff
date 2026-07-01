@@ -3,7 +3,7 @@ Scripts used in Nihar's run from raw OpenUniverse Images to L2 and piff files. T
 
 You will need to install romanimpreprocess, roman-hlis-l2-driver, and piff - I'll add a requirements.txt file at some point. 
 
-Start with L1 images taken from the OpenUniverse 2024 runs by running the `OpenUniverse_to_L1L2_Jun26.job` script. Make sure to change the input/output directories as needed, as well as the random seed. 
+Start with images taken from the OpenUniverse 2024 runs by running the `OpenUniverse_to_L1L2_Jun26.job` script. Make sure to change the input/output directories as needed, as well as the random seed. 
 This calls the `OpenUniverse_to_L1L2_Jun26.py` script under the hood that was written by Chris Hirata. (I've also included a perl script that Chris wrote to make sure that all the necessary files have been copied over correctly - we ran this on a subset on OSC.)
 
 Once that is done, you can run `ffov_maker.py` to make the full-field of view images from the L2 images that romanimpreprocess made. 
