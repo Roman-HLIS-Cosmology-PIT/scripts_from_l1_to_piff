@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH --job-name=impreprocess_sims
+#SBATCH --account=PCON0003
+#SBATCH --array=1-18
+#SBATCH --time=120:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=2
+
+# use sbatch OpenUniverse_to_L1L2_Dec25.job
+# array should be the SCAs you want
+# may also need to use --export=TMPDIR=... if you need to specify a temporary directory on your system
+
+export ROMANTILE="H1"
+echo $ROMANTILE
+
+cd $SLURM_SUBMIT_DIR
+date
+python -m OpenUniverse_to_L1L2_Jun26 \
+   --in=/fs/ess/PCON0003/nddalal/needed \
+   --out=/fs/ess/PCON0003/nddalal/impreprocess_e2e/outputs \
+   --cal=/fs/scratch/PCON0003/cond0007/cal/ \
+   --tag=DUMMY20250521 --seed=119910401 --dseed=10 \
+   --sca=$SLURM_ARRAY_TASK_ID > logs-romanimpreprocess/$ROMANTILE-$SLURM_ARRAY_TASK_ID-Jun26_nihar.txt
+date
