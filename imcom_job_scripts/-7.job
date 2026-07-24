@@ -1,0 +1,7 @@
+#!/bin/bash
+#SBATCH --job-name=pyimcom
+#SBATCH --account=PCON0003
+#SBATCH --time=144:00:00
+#SBATCH --nodes=1 --ntasks-per-node=1 --cpus-per-task=12
+cd $SLURM_SUBMIT_DIR
+python3 -m pyimcom.diagnostics.run /fs/ess/PCON0003/nddalal/imcom_run_Jul2/H1/coadd/H1-r8_00_00.cpr.fits.gz ./output_logs/_report > ./output_logs/-S7.txt

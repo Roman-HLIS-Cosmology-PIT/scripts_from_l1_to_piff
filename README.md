@@ -1,4 +1,4 @@
-# scripts_from_l1_to_piff
+# Going from OpenUniverse to Piff
 Scripts used in Nihar's run from raw OpenUniverse Images to L2 and piff files. This is currently optimized for OSC, and assumes paths on OSC. Please contact me if you would like to try doing this on your local machine. 
 
 You will need to install romanimpreprocess, roman-hlis-l2-driver, and piff - I'll add a requirements.txt file at some point. 
@@ -13,5 +13,9 @@ Now that the ffov files have been made, you can start running piff. But you need
 The config I ran piff with is saved in `piff_base.yaml`. To run on a single exposure, look at `piff.sh` and to run in parallel with a job array, look at `piff_multi.sh`. 
 
 The last step was to convert to pyImcom readable legendre format, which is achieved by `convert_piff.py` and `convert_piff.sh`.
+
+# Running pyimcom with Piff inputs
+To run pyimcom, you need a config file: `imcom_config.json` and a very nice perl script that Chris Hirata wrote `writejobs_imcom.pl` (may need to be modified for a given HPC).
+This will write a series of slurm scripts (and launch them with dependencies). The slurm scripts can be seen in `imcom_job_scripts/`. 
 
 Happy processing! Contact me if there are questions!

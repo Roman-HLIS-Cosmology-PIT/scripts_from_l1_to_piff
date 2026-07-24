@@ -1,0 +1,12 @@
+#!/bin/bash
+#SBATCH --job-name=pyimcom
+#SBATCH --account=PCON0003
+#SBATCH --array=0-79
+#SBATCH --time=72:00:00
+#SBATCH --nodes=1 --ntasks-per-node=1 --cpus-per-task=2
+cd $SLURM_SUBMIT_DIR
+STARTBLOCK=$((20*SLURM_ARRAY_TASK_ID))
+for i in {0..19}; do
+    BLOCK=$((STARTBLOCK+i))
+    python ./job_scripts/_scr.py config.json $BLOCK > ./output_logs/-S5-$BLOCK.txt
+done
